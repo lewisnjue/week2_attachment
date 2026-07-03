@@ -1,0 +1,25 @@
+name: "Data Ingestion"
+
+on:
+  workflow_dispatch: # Allows manual triggering from the GitHub Actions tab
+
+jobs:
+  ingestion:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up uv and Python 3.14
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: '3.14' # Provisions Python 3.14 automatically
+          enable-cache: true     # Caches virtualenv/dependencies for speed
+
+      - name: Run Ingestion Script
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+        run: |
+          # Executes the specific database ingestion script using uv
+          uv run python src/boma_analytics/db_ingest.py

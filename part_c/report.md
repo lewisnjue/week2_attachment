@@ -28,4 +28,4 @@ CREATE TABLE Data_science_students
 The table was successfully created in the SQLite database.
 
 ## Verification
-[screen]('./Screenshot From 2026-07-03 16-46-54.png')
+![screen](./Screenshot From 2026-07-03 16-46-54.png)
